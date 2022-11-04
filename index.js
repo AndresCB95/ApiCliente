@@ -28,7 +28,7 @@ app.post(pathName,
         console.log("Recibimos peticion")
         console.log(req.body)
         let clientes = clientesService.clientesSetExport(req.body)
-        res.send({"mensaje":"Vuelo Guardado","clientes":clientes})
+        res.send({"mensaje":"cliente Guardado","clientes":clientes})
     }
 )
 
@@ -38,7 +38,7 @@ app.delete(pathName,
         let id = req.query.id
         console.log(id)
         let clientes = clientesService.clientesDeleteExport(id)
-        res.send({"mensaje":"Vuelo Guardado","clientes":clientes})
+        res.send({"mensaje":"cliente Guardado","clientes":clientes})
     }
 )
 
@@ -61,6 +61,6 @@ app.patch(pathName,
 
 app.listen(port, 
     ()=>{
-        console.log("Subio el app vuelo en el puerto "+port)
+        console.log("Subio el app cliente en el puerto "+port)
     }
 )
