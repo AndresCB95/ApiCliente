@@ -11,7 +11,7 @@ const port = 8082
 app.use(cors())
 app.use(body_parse.json())
 
-const pathName="clientes/"
+const pathName="/clientes"
 
 
 app.get(pathName,
@@ -21,6 +21,17 @@ app.get(pathName,
         res.send(clientesService.clientesgetExport())
     }
 )
+
+
+app.get(pathName+"/id",
+
+        (req, res)=>{
+            console.log("Recibimos peticion")
+            let id = req.query.id
+            console.log(id)
+            res.send(clientesService.clientegetidExport(id))
+        }
+    )
 
 
 app.post(pathName,
