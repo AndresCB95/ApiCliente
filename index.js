@@ -23,10 +23,10 @@ app.get(pathName,
 )
 
 app.get(pathName+"/id",
-    (req, res)=>{
+    async (req, res)=>{
         console.log("Recibimos peticion")
         let id = req.query.id
-        res.send(clientesService.clientesgetIdExport(id))
+        res.send(await clientesService.clientesgetIdExport(id))
 }
 )
 

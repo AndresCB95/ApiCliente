@@ -1,5 +1,11 @@
-let clientes = require("./clientes.json")
+const getMongo = require("./mongodb.js")
 
+async function getConexiones() {
+    const nameDb = "aerolineaG1y2"
+    const client = await getMongo.getClientnExport(nameDb)
+    const collection = await getMongo.getCollectionExport(client, nameDb)
+    return { collection, client }
+}
 
 const clientesGet = () =>{
 
@@ -23,15 +29,19 @@ const clientesDelete = (id) =>{
     return clientes
 }
 
-const clientesgetId = (id) =>{
-
-    let cliente = clientes.find(
+const clientesgetId = async (id) =>{
+    const { collection, client } = await getConexiones()
+    var clienteEncontrado = null
+    await collection.findOne({"_id":id}).then(
+        
         (client)=>{
-            return client.id === id
+            clienteEncontrado = client
         }
+    
     )
 
-    return cliente
+    await getMongo.closeClientExport(client)
+    return clienteEncontrado
 
 }
 
