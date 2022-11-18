@@ -2,7 +2,7 @@ const express = require("express")
 const cors = require("cors")
 const body_parse = require("body-parser")
 const path = require("path")
-const clientesService = require("./clienteService.js")
+const clientesService = require("./ClienteService.js")
 
 const app = express()
 const port = 8082
